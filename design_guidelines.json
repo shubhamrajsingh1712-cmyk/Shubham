@@ -1,0 +1,177 @@
+{
+  "brand_identity": {
+    "name": "BoatMyCareer.com",
+    "founder": "Shubham Raj Singh",
+    "tagline": "Navigate Your Future with Scientific Precision",
+    "tone": "Professional, Academic, Trustworthy, Encouraging, Scientific",
+    "archetype": "The Sage (Knowledge & Truth) + The Caregiver (Support)",
+    "primary_audience": "Students (Class VII-XII) & Parents"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Playfair Display, serif",
+      "weights": ["600", "700"],
+      "usage": "Use for all H1-H3 headings. Adds academic prestige and authority.",
+      "letter_spacing": "-0.02em"
+    },
+    "body": {
+      "font_family": "Manrope, sans-serif",
+      "weights": ["400", "500", "600"],
+      "usage": "Use for all body text, UI elements, and data displays. Clean and legible.",
+      "line_height": "1.6"
+    },
+    "mono": {
+      "font_family": "JetBrains Mono, monospace",
+      "usage": "Use sparingly for data points, test scores, or technical details."
+    }
+  },
+  "colors": {
+    "palette_name": "Academic Trust",
+    "mode": "light",
+    "primary": {
+      "name": "Deep Navy",
+      "hex": "#1A2B4B",
+      "tailwind": "bg-[#1A2B4B]",
+      "usage": "Primary buttons, active states, key headings. Signals authority."
+    },
+    "secondary": {
+      "name": "Sage Green",
+      "hex": "#5D7A68",
+      "tailwind": "bg-[#5D7A68]",
+      "usage": "Success states, growth indicators, secondary buttons. Signals balance."
+    },
+    "accent": {
+      "name": "Terracotta",
+      "hex": "#C87961",
+      "tailwind": "bg-[#C87961]",
+      "usage": "Call to actions (CTAs), highlights, urgent notifications. Signals human connection."
+    },
+    "background": {
+      "main": "#F9F8F6",
+      "paper": "#FFFFFF",
+      "subtle": "#F2F0EB"
+    },
+    "text": {
+      "primary": "#1A1A1A",
+      "secondary": "#4A4A4A",
+      "muted": "#71717A"
+    },
+    "gradients": {
+      "hero_overlay": "linear-gradient(180deg, rgba(26, 43, 75, 0.05) 0%, rgba(26, 43, 75, 0) 100%)",
+      "subtle_glow": "radial-gradient(circle at 50% 50%, rgba(93, 122, 104, 0.1) 0%, transparent 70%)"
+    }
+  },
+  "visual_enhancers": {
+    "borders": {
+      "style": "solid",
+      "width": "1px",
+      "color": "rgba(0, 0, 0, 0.08)",
+      "radius": {
+        "sm": "4px",
+        "md": "8px",
+        "lg": "12px",
+        "xl": "24px"
+      }
+    },
+    "shadows": {
+      "card": "0 2px 8px -2px rgba(26, 43, 75, 0.05), 0 4px 16px -4px rgba(26, 43, 75, 0.02)",
+      "float": "0 12px 32px -8px rgba(26, 43, 75, 0.12)",
+      "inner": "inset 0 1px 2px rgba(0, 0, 0, 0.04)"
+    },
+    "textures": {
+      "noise": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E\")"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#1A2B4B] text-white hover:bg-[#1A2B4B]/90 rounded-md px-6 py-3 font-medium transition-all shadow-sm hover:shadow-md",
+      "secondary": "bg-[#F2F0EB] text-[#1A2B4B] hover:bg-[#E5E2DB] rounded-md px-6 py-3 font-medium transition-all",
+      "outline": "border border-[#1A2B4B]/20 text-[#1A2B4B] hover:bg-[#1A2B4B]/5 rounded-md px-6 py-3 font-medium transition-all"
+    },
+    "cards": {
+      "base": "bg-white border border-black/5 rounded-xl shadow-card p-6 relative overflow-hidden",
+      "interactive": "hover:-translate-y-1 hover:shadow-float transition-all duration-300 cursor-pointer"
+    },
+    "inputs": {
+      "base": "bg-white border border-black/10 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#1A2B4B]/20 focus:border-[#1A2B4B] outline-none transition-all"
+    }
+  },
+  "grids": {
+    "marketing": {
+      "name": "The Tetris Grid (Mode A)",
+      "classes": "grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8",
+      "usage": "Use for Landing Page sections (Why Us, How It Works). Avoid equal-width columns."
+    },
+    "dashboard": {
+      "name": "High Density Grid (Mode B)",
+      "classes": "grid grid-cols-1 md:grid-cols-4 gap-4",
+      "usage": "Use for Student/Admin Dashboards. Maximize screen real estate."
+    }
+  },
+  "motion": {
+    "transitions": "transition-all duration-300 ease-out",
+    "hover_effects": "hover:scale-[1.01] active:scale-[0.99]",
+    "page_load": "animate-in fade-in slide-in-from-bottom-4 duration-700"
+  },
+  "accessibility": {
+    "contrast": "Ensure 4.5:1 ratio for normal text. Use #1A1A1A for body text on light backgrounds.",
+    "focus_states": "Visible focus rings required. Use ring-2 ring-offset-2 ring-[#1A2B4B]/50.",
+    "reduced_motion": "Respect prefers-reduced-motion media query."
+  },
+  "media": {
+    "image_style": "Authentic, candid, warm lighting. Avoid staged 'corporate' stock photos. Use images with depth.",
+    "icons": "Phosphor Icons (Regular weight for UI, Duotone for Features).",
+    "charts": "Recharts with custom colors: #1A2B4B (Primary), #5D7A68 (Secondary), #C87961 (Accent)."
+  },
+  "image_urls": {
+    "hero_section": [
+      {
+        "url": "https://images.pexels.com/photos/3231359/pexels-photo-3231359.jpeg",
+        "alt": "Group of diverse students studying together",
+        "category": "hero_main",
+        "description": "Use as the main hero image. Represents collaboration and focus."
+      },
+      {
+        "url": "https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBzdHVkZW50cyUyMHN0dWR5aW5nJTIwY2xhc3Nyb29tfGVufDB8fHx8MTc2OTE1NDU0M3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Indian student in classroom",
+        "category": "hero_secondary",
+        "description": "Use for 'Reach' or 'Impact' sections. Authentic Indian context."
+      }
+    ],
+    "counseling_section": [
+      {
+        "url": "https://images.unsplash.com/photo-1758520144437-f068ecaf0d83?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHwzfHxjYXJlZXIlMjBjb3Vuc2VsaW5nJTIwbWVldGluZyUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3NjkxNTQ1NDV8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Professional counseling session",
+        "category": "counseling",
+        "description": "Use for 'How it Works' or 'Expert Guidance' section."
+      }
+    ],
+    "psychometric_section": [
+      {
+        "url": "https://images.unsplash.com/photo-1565213785958-d5db75b246a9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMGJyYWluJTIwY29ubmVjdGlvbiUyMG1pbmltYWx8ZW58MHx8fHwxNzY5MTU0NTQ3fDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Abstract geometric lines representing neural connections",
+        "category": "abstract",
+        "description": "Use as a subtle background or accent for the 'Scientific Assessment' section."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "1. IMPLEMENT THEME: Set up the Tailwind config with the 'Academic Trust' color palette immediately.",
+    "2. FONT SETUP: Import 'Playfair Display' and 'Manrope' from Google Fonts in index.css.",
+    "3. COMPONENT OVERRIDES: Customize Shadcn components to remove the default 'zinc' look. Use the 'Deep Navy' and 'Sage Green' palette.",
+    "4. LANDING PAGE: Build the landing page using the 'Tetris Grid'. Do not use a simple single-column layout.",
+    "5. FORMS: Use Shadcn Form components for the Registration and Assessment flows. Ensure validation is robust.",
+    "6. CHARTS: Use Recharts for the Student Report. Style them to match the brand colors.",
+    "7. FOUNDER SECTION: Create a dedicated section for 'Shubham Raj Singh'. Use a placeholder image if a real one is not available, but style it professionally (e.g., grayscale with a navy overlay).",
+    "8. TEST IDs: Add data-testid to all interactive elements (buttons, inputs, links)."
+  ],
+  "universal_guidelines": [
+    "Avoid 'AI Slop': No generic centered layouts, no purple gradients.",
+    "Use 2-3x more spacing than typical designs.",
+    "Every interaction needs micro-animations.",
+    "Do not use 'transition: all'.",
+    "Use 'sonner' for toasts.",
+    "Components must use named exports.",
+    "Pages must use default exports."
+  ]
+}
