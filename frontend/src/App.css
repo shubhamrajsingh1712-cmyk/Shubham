@@ -1,34 +1,34 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.App {
+  min-height: 100vh;
+  background-color: #F9F8F6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.hero-gradient {
+  background: linear-gradient(180deg, rgba(26, 43, 75, 0.05) 0%, rgba(26, 43, 75, 0) 100%);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.subtle-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(93, 122, 104, 0.1) 0%, transparent 70%);
 }
 
-.App-link {
-    color: #61dafb;
+.noise-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.btn-primary {
+  @apply bg-[#1A2B4B] text-white hover:bg-[#1A2B4B]/90 rounded-md px-6 py-3 font-medium transition-all shadow-sm hover:shadow-md;
+}
+
+.btn-secondary {
+  @apply bg-[#F2F0EB] text-[#1A2B4B] hover:bg-[#E5E2DB] rounded-md px-6 py-3 font-medium transition-all;
+}
+
+.card-base {
+  @apply bg-white border border-black/5 rounded-xl p-6 relative overflow-hidden;
+  box-shadow: 0 2px 8px -2px rgba(26, 43, 75, 0.05), 0 4px 16px -4px rgba(26, 43, 75, 0.02);
+}
+
+.card-interactive {
+  @apply card-base hover:-translate-y-1 transition-all duration-300 cursor-pointer;
+  box-shadow: 0 12px 32px -8px rgba(26, 43, 75, 0.12);
 }
