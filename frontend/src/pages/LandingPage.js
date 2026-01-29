@@ -280,127 +280,269 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-              Detailed Assessment Report
+              Sample Assessment Report
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              After completing your assessment, receive a comprehensive 20-25 page report with 
-              in-depth analysis, visual charts, and personalized career recommendations.
+              Below is a sample of the comprehensive 20-25 page career discovery report that students receive 
+              after completing their psychometric assessment.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Report Preview */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-primary/20">
-              <div className="mb-6">
-                <div className="text-sm text-gray-500 mb-2">Sample Report Sections</div>
-                <h3 className="text-2xl font-heading font-bold text-primary">What You'll Receive</h3>
+          {/* Sample Report Preview */}
+          <div className="max-w-5xl mx-auto">
+            <Card className="card-base p-8 md:p-12 border-2 border-primary/20">
+              {/* Report Header */}
+              <div className="text-center mb-8 pb-6 border-b-2 border-primary/10">
+                <div className="inline-block bg-primary/10 px-4 py-1 rounded-full mb-3">
+                  <span className="text-xs font-semibold text-primary uppercase tracking-wide">Sample Report</span>
+                </div>
+                <h3 className="text-3xl font-heading font-bold text-primary mb-2">
+                  Career Discovery Report
+                </h3>
+                <p className="text-gray-600">Comprehensive Psychometric Assessment</p>
               </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
-                  <div>
-                    <h4 className="font-semibold text-primary">Executive Summary</h4>
-                    <p className="text-sm text-gray-600">Overall profile with radar charts showing your strengths across 5 dimensions</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
-                  <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+              {/* Student Profile Card */}
+              <div className="bg-subtle rounded-xl p-6 mb-8">
+                <h4 className="font-heading font-semibold text-lg text-primary mb-4">Student Profile</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
-                    <h4 className="font-semibold text-primary">Work Orientation Analysis</h4>
-                    <p className="text-sm text-gray-600">Detailed 3-4 page analysis of your work style preferences and environment fit</p>
+                    <p className="text-xs text-gray-500 mb-1">Student Name</p>
+                    <p className="font-semibold">Prashant Shivam</p>
                   </div>
-                </div>
-
-                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
-                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">3</div>
                   <div>
-                    <h4 className="font-semibold text-primary">Interest Mapping</h4>
-                    <p className="text-sm text-gray-600">Your interests across STEM, Arts, Business, Healthcare, and Social domains</p>
+                    <p className="text-xs text-gray-500 mb-1">Class</p>
+                    <p className="font-semibold">10th Standard</p>
                   </div>
-                </div>
-
-                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">4</div>
                   <div>
-                    <h4 className="font-semibold text-primary">Personality Profile</h4>
-                    <p className="text-sm text-gray-600">8 key personality traits with behavioral insights and leadership potential</p>
+                    <p className="text-xs text-gray-500 mb-1">School</p>
+                    <p className="font-semibold">DAV Public School</p>
                   </div>
-                </div>
-
-                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
-                  <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">5</div>
                   <div>
-                    <h4 className="font-semibold text-primary">Aptitude & EQ Analysis</h4>
-                    <p className="text-sm text-gray-600">Cognitive abilities and emotional intelligence assessment with learning style insights</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
-                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">6</div>
-                  <div>
-                    <h4 className="font-semibold text-primary">Career Recommendations</h4>
-                    <p className="text-sm text-gray-600">Top 10-15 personalized career paths with subject selection guidance</p>
+                    <p className="text-xs text-gray-500 mb-1">Location</p>
+                    <p className="font-semibold">Patna, Bihar</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Report Features */}
-            <div className="space-y-6">
-              <Card className="card-base p-6 bg-white border-2 border-secondary/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Award className="text-secondary" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-lg mb-2">Visual Analysis</h4>
-                    <p className="text-gray-600">
-                      Radar charts, bar graphs, and color-coded interpretive bands (Low/Moderate/High) 
-                      make complex data easy to understand for both students and parents.
-                    </p>
+              {/* Executive Summary */}
+              <div className="mb-8">
+                <h4 className="font-heading font-semibold text-xl text-primary mb-4 flex items-center">
+                  <span className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm mr-3">1</span>
+                  Executive Summary
+                </h4>
+                <div className="pl-11">
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    Prashant demonstrates a strong analytical orientation combined with high technological aptitude. 
+                    His assessment reveals excellent problem-solving abilities and a natural inclination towards 
+                    STEM fields. The results indicate strong potential in engineering, technology, and research-oriented careers.
+                  </p>
+                  
+                  {/* Top Strengths */}
+                  <div className="bg-white rounded-lg border border-secondary/20 p-4 mb-4">
+                    <h5 className="font-semibold text-sm text-secondary mb-3">Top 5 Strengths Identified:</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-secondary" size={16} />
+                        <span className="text-sm">Analytical Thinking (86%)</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-secondary" size={16} />
+                        <span className="text-sm">Technological Understanding (84%)</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-secondary" size={16} />
+                        <span className="text-sm">Logical Reasoning (82%)</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-secondary" size={16} />
+                        <span className="text-sm">STEM Interest (81%)</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-secondary" size={16} />
+                        <span className="text-sm">Perseverance (79%)</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </Card>
-
-              <Card className="card-base p-6 bg-white border-2 border-primary/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <BookOpen className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-lg mb-2">Expert Interpretation</h4>
-                    <p className="text-gray-600">
-                      500-700 word detailed interpretation for each dimension, written in simple yet 
-                      expert language understandable by students, parents, and counselors.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="card-base p-6 bg-white border-2 border-accent/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="text-accent" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-lg mb-2">Actionable Roadmap</h4>
-                    <p className="text-gray-600">
-                      Strengths & development areas with specific recommendations, skill development 
-                      strategies, and career pathways showing Class 9-12 → UG → PG progression.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-
-              <div className="bg-primary text-white rounded-xl p-6">
-                <h4 className="font-heading font-bold text-xl mb-2">20-25 Pages</h4>
-                <p className="text-sm opacity-90">
-                  Comprehensive analysis across all dimensions with professional formatting, 
-                  charts, tables, and counselor-ready insights. Downloaded as a PDF for easy sharing.
-                </p>
               </div>
+
+              {/* Dimension Scores Overview */}
+              <div className="mb-8">
+                <h4 className="font-heading font-semibold text-xl text-primary mb-4 flex items-center">
+                  <span className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white text-sm mr-3">2</span>
+                  5-Dimensional Assessment Scores
+                </h4>
+                <div className="pl-11 space-y-4">
+                  {/* Orientation Score */}
+                  <div className="bg-white border border-gray-200 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold">Work Orientation</span>
+                      <span className="text-sm font-bold text-primary">Analytical: 86%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-primary h-2 rounded-full" style={{width: '86%'}}></div>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-2">Strong analytical orientation with systematic problem-solving approach</p>
+                  </div>
+
+                  {/* Interest Score */}
+                  <div className="bg-white border border-gray-200 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold">Interest Mapping</span>
+                      <span className="text-sm font-bold text-secondary">STEM: 81%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-secondary h-2 rounded-full" style={{width: '81%'}}></div>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-2">High interest in Science, Technology, Engineering & Mathematics</p>
+                  </div>
+
+                  {/* Personality Score */}
+                  <div className="bg-white border border-gray-200 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold">Personality Profile</span>
+                      <span className="text-sm font-bold text-accent">Self-Discipline: 79%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-accent h-2 rounded-full" style={{width: '79%'}}></div>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-2">Strong perseverance, self-discipline, and decision-making abilities</p>
+                  </div>
+
+                  {/* Aptitude Score */}
+                  <div className="bg-white border border-gray-200 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold">Cognitive Aptitude</span>
+                      <span className="text-sm font-bold text-primary">Tech Understanding: 84%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-primary h-2 rounded-full" style={{width: '84%'}}></div>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-2">Excellent technological aptitude and numerical problem-solving skills</p>
+                  </div>
+
+                  {/* EQ Score */}
+                  <div className="bg-white border border-gray-200 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold">Emotional Intelligence</span>
+                      <span className="text-sm font-bold text-secondary">Motivation: 76%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-secondary h-2 rounded-full" style={{width: '76%'}}></div>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-2">Good emotional awareness and strong internal motivation</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Career Recommendations */}
+              <div className="mb-8">
+                <h4 className="font-heading font-semibold text-xl text-primary mb-4 flex items-center">
+                  <span className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-sm mr-3">3</span>
+                  Top Career Recommendations
+                </h4>
+                <div className="pl-11">
+                  <p className="text-gray-700 mb-4">
+                    Based on Prashant's assessment results, the following career paths align strongly with his 
+                    orientation, interests, aptitude, and personality profile:
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      { name: 'Software Engineer', match: '94%', stream: 'Science (PCM)' },
+                      { name: 'Data Scientist', match: '91%', stream: 'Science (PCM)' },
+                      { name: 'Computer Systems Analyst', match: '89%', stream: 'Science (PCM)' },
+                      { name: 'Mechanical Engineer', match: '87%', stream: 'Science (PCM)' },
+                      { name: 'Research Scientist', match: '85%', stream: 'Science (PCB/PCM)' },
+                      { name: 'Robotics Engineer', match: '84%', stream: 'Science (PCM)' }
+                    ].map((career, idx) => (
+                      <div key={idx} className="bg-white border-2 border-primary/10 rounded-lg p-4 hover:border-primary/30 transition-all">
+                        <div className="flex items-start justify-between mb-2">
+                          <h5 className="font-semibold text-primary">{career.name}</h5>
+                          <span className="text-xs font-bold bg-secondary/20 text-secondary px-2 py-1 rounded">
+                            {career.match} Match
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-600">Recommended Stream: {career.stream}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Stream Recommendation */}
+              <div className="mb-8">
+                <h4 className="font-heading font-semibold text-xl text-primary mb-4 flex items-center">
+                  <span className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm mr-3">4</span>
+                  Stream & Subject Recommendation
+                </h4>
+                <div className="pl-11">
+                  <div className="bg-primary/5 border-l-4 border-primary rounded-r-lg p-6">
+                    <h5 className="font-bold text-lg text-primary mb-3">Recommended Stream: Science (PCM)</h5>
+                    <p className="text-gray-700 mb-4">
+                      Based on strong analytical orientation, STEM interest, and technological aptitude, 
+                      Science stream with Physics, Chemistry, and Mathematics is highly recommended for Class 11-12.
+                    </p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <div className="bg-white rounded-lg p-3 text-center border border-primary/20">
+                        <p className="text-xs text-gray-600 mb-1">Core Subject</p>
+                        <p className="font-semibold text-primary">Physics</p>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 text-center border border-primary/20">
+                        <p className="text-xs text-gray-600 mb-1">Core Subject</p>
+                        <p className="font-semibold text-primary">Chemistry</p>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 text-center border border-primary/20">
+                        <p className="text-xs text-gray-600 mb-1">Core Subject</p>
+                        <p className="font-semibold text-primary">Mathematics</p>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 text-center border border-secondary/20">
+                        <p className="text-xs text-gray-600 mb-1">Optional</p>
+                        <p className="font-semibold text-secondary">Computer Sc.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Report Footer */}
+              <div className="border-t-2 border-gray-200 pt-6 mt-8">
+                <div className="bg-subtle rounded-lg p-6">
+                  <div className="flex items-start space-x-4">
+                    <FileText className="text-primary flex-shrink-0 mt-1" size={24} />
+                    <div>
+                      <h5 className="font-heading font-semibold mb-2">Complete Report Includes:</h5>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• Detailed 3-4 page analysis for each of the 5 dimensions</li>
+                        <li>• Radar charts and bar graphs for visual understanding</li>
+                        <li>• 10-15 career recommendations with detailed pathways</li>
+                        <li>• Entrance exam guidance and top institution recommendations</li>
+                        <li>• Personality insights and behavioral analysis</li>
+                        <li>• Development roadmap with actionable recommendations</li>
+                        <li>• Career progression timelines (Class 9-12 → UG → PG → Career)</li>
+                      </ul>
+                      <p className="text-sm text-primary font-semibold mt-4">
+                        Total Pages: 20-25 | Format: PDF | Downloadable & Printable
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* CTA */}
+            <div className="text-center mt-8">
+              <p className="text-gray-600 mb-4">
+                Get your own personalized 20-25 page career discovery report
+              </p>
+              <Button 
+                size="lg" 
+                className="bg-accent hover:bg-accent/90 text-white px-8"
+                onClick={handleGetStarted}
+                data-testid="get-report-btn"
+              >
+                Start Your Assessment
+              </Button>
             </div>
           </div>
         </div>
