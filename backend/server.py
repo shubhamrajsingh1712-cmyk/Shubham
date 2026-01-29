@@ -592,18 +592,16 @@ async def verify_payment(payment_id: str, admin_user: dict = Depends(get_admin_u
 # Test Routes
 @api_router.post("/tests/submit", response_model=TestResult)
 async def submit_test(test_data: TestSubmission, current_user: dict = Depends(get_current_user)):
+    from scoring_engine import ScoringEngine
+    
     responses_list = [r.model_dump() for r in test_data.responses]
     
-    # Calculate scores based on test type
-    scores = {}
-    if test_data.test_type == "orientation":
-        scores = calculate_orientation_scores(responses_list)
-    elif test_data.test_type == "personality":
-        scores = calculate_personality_scores(responses_list)
-    elif test_data.test_type == "aptitude":
-        scores = calculate_aptitude_scores(responses_list)
-    elif test_data.test_type == "eq":
-        scores = calculate_eq_scores(responses_list)
+    # Use advanced scoring engine
+    scoring_engine = ScoringEngine()
+    scoring_result = scoring_engine.calculate_scores(test_data.test_type, responses_list)
+    
+    # Extract normalized scores for storage
+    scores = scoring_result.get('normalized_scores', {})
     
     test_result = TestResult(
         user_id=test_data.user_id,
@@ -614,6 +612,9 @@ async def submit_test(test_data: TestSubmission, current_user: dict = Depends(ge
     
     result_dict = test_result.model_dump()
     result_dict['completed_at'] = result_dict['completed_at'].isoformat()
+    
+    # Store full scoring result for report generation
+    result_dict['scoring_details'] = scoring_result
     
     await db.test_results.insert_one(result_dict)
     return test_result
