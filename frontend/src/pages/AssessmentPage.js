@@ -62,17 +62,21 @@ export default function AssessmentPage() {
     const unanswered = questions.filter(q => !responses[q.id]);
     if (unanswered.length > 0) {
       toast.error(`Please answer all questions. ${unanswered.length} remaining.`);
+      // Jump to first unanswered question
+      const firstUnansweredIndex = questions.findIndex(q => !responses[q.id]);
+      if (firstUnansweredIndex !== -1) {
+        setCurrentQuestion(firstUnansweredIndex);
+      }
       return;
     }
 
     setSubmitting(true);
 
     try {
+      // All questions are now Likert scale (1-5)
       const formattedResponses = questions.map(q => ({
         question_id: q.id,
-        response: q.type === 'mcq' 
-          ? responses[q.id] === q.correct 
-          : parseInt(responses[q.id])
+        response: parseInt(responses[q.id])
       }));
 
       await axios.post(`${API_URL}/tests/submit`, {
