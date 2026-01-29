@@ -173,21 +173,44 @@ export default function AssessmentPage() {
 
           <div className="space-y-4">
             <RadioGroup 
-              value={responses[question.id]?.toString()} 
-              onValueChange={(val) => handleResponse(question.id, val)}
+              value={responses[question.id] || ""} 
+              onValueChange={(val) => {
+                console.log(`Selected value: ${val} for question: ${question.id}`);
+                handleResponse(question.id, val);
+              }}
             >
-              {[1, 2, 3, 4, 5].map(value => (
-                <div key={value} className="flex items-center space-x-3" data-testid={`scale-option-${value}`}>
-                  <RadioGroupItem value={value.toString()} id={`${question.id}-${value}`} />
-                  <Label htmlFor={`${question.id}-${value}`} className="cursor-pointer flex-1">
-                    {value === 1 && 'Strongly Disagree'}
-                    {value === 2 && 'Disagree'}
-                    {value === 3 && 'Neutral'}
-                    {value === 4 && 'Agree'}
-                    {value === 5 && 'Strongly Agree'}
-                  </Label>
-                </div>
-              ))}
+              {[1, 2, 3, 4, 5].map(value => {
+                const valueStr = value.toString();
+                const isSelected = responses[question.id] === valueStr;
+                
+                return (
+                  <div 
+                    key={value} 
+                    className={`flex items-center space-x-3 p-3 rounded-lg border transition-all ${
+                      isSelected 
+                        ? 'border-primary bg-primary/5 shadow-sm' 
+                        : 'border-gray-200 hover:border-primary/50 hover:bg-gray-50'
+                    }`}
+                    data-testid={`scale-option-${value}`}
+                  >
+                    <RadioGroupItem 
+                      value={valueStr} 
+                      id={`${question.id}-${value}`}
+                      checked={isSelected}
+                    />
+                    <Label 
+                      htmlFor={`${question.id}-${value}`} 
+                      className="cursor-pointer flex-1 font-medium"
+                    >
+                      {value === 1 && 'Strongly Disagree'}
+                      {value === 2 && 'Disagree'}
+                      {value === 3 && 'Neutral'}
+                      {value === 4 && 'Agree'}
+                      {value === 5 && 'Strongly Agree'}
+                    </Label>
+                  </div>
+                );
+              })}
             </RadioGroup>
           </div>
         </Card>
