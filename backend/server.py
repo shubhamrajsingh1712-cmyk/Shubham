@@ -630,16 +630,21 @@ async def get_user_tests(user_id: str, current_user: dict = Depends(get_current_
 # Report Routes
 @api_router.post("/reports/generate/{user_id}")
 async def generate_report(user_id: str, current_user: dict = Depends(get_current_user)):
+    from report_generator import ComprehensiveReportGenerator
+    
     # Get all test results for user
     test_results = await db.test_results.find({"user_id": user_id}, {"_id": 0}).to_list(100)
     
     if not test_results:
         raise HTTPException(status_code=404, detail="No test results found for user")
     
-    # Compile overall scores
+    # Get user data
+    user_data = await db.users.find_one({"id": user_id}, {"_id": 0, "password": 0})
+    
+    # Compile overall scores and analysis
     overall_scores = {}
     for test in test_results:
-        overall_scores[test['test_type']] = test['scores']
+        overall_scores[test['test_type']] = test.get('scoring_details', {})
     
     # Generate career recommendations
     career_recommendations = generate_career_recommendations(overall_scores)
@@ -648,19 +653,13 @@ async def generate_report(user_id: str, current_user: dict = Depends(get_current
     strengths = []
     development_areas = []
     
-    for test_type, scores in overall_scores.items():
+    for test_type, scores_data in overall_scores.items():
+        scores = scores_data.get('normalized_scores', {})
         for key, value in scores.items():
             if value >= 75:
                 strengths.append(f"Strong {key.replace('_', ' ').title()} ({test_type})")
             elif value < 50:
                 development_areas.append(f"Develop {key.replace('_', ' ').title()} ({test_type})")
-    
-    overall_scores['career_recommendations'] = career_recommendations
-    overall_scores['strengths'] = strengths[:5]
-    overall_scores['development_areas'] = development_areas[:5]
-    
-    # Get user data
-    user_data = await db.users.find_one({"id": user_id}, {"_id": 0, "password": 0})
     
     # Create report
     report = AssessmentReport(
@@ -668,20 +667,27 @@ async def generate_report(user_id: str, current_user: dict = Depends(get_current
         test_results=[t['id'] for t in test_results],
         overall_scores=overall_scores,
         career_recommendations=career_recommendations,
-        strengths=strengths[:5],
+        strengths=strengths[:10],
         development_areas=development_areas[:5]
     )
     
-    # Generate PDF
-    pdf_path = generate_pdf_report(user_data, overall_scores, report.id)
-    report.report_file_path = pdf_path
+    # Generate comprehensive PDF using new generator
+    try:
+        report_gen = ComprehensiveReportGenerator()
+        pdf_path = report_gen.generate_report(user_data, test_results, report.id)
+        report.report_file_path = pdf_path
+    except Exception as e:
+        print(f"Error generating report: {e}")
+        # Fallback to basic report if comprehensive fails
+        pdf_path = generate_pdf_report(user_data, overall_scores, report.id)
+        report.report_file_path = pdf_path
     
     report_dict = report.model_dump()
     report_dict['generated_at'] = report_dict['generated_at'].isoformat()
     
     await db.reports.insert_one(report_dict)
     
-    return {"report_id": report.id, "message": "Report generated successfully"}
+    return {"report_id": report.id, "message": "Comprehensive report generated successfully"}
 
 @api_router.get("/reports/user/{user_id}", response_model=List[AssessmentReport])
 async def get_user_reports(user_id: str, current_user: dict = Depends(get_current_user)):
