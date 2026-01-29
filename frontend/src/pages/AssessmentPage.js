@@ -58,26 +58,31 @@ export default function AssessmentPage() {
   };
 
   const handleSubmit = async () => {
-    // Check if all questions are answered
-    const unanswered = questions.filter(q => !responses[q.id]);
-    if (unanswered.length > 0) {
-      toast.error(`Please answer all questions. ${unanswered.length} remaining.`);
-      // Jump to first unanswered question
-      const firstUnansweredIndex = questions.findIndex(q => !responses[q.id]);
-      if (firstUnansweredIndex !== -1) {
-        setCurrentQuestion(firstUnansweredIndex);
-      }
-      return;
+    const answeredCount = Object.keys(responses).length;
+    
+    // Warn if not all questions answered but allow submission
+    if (answeredCount < questions.length) {
+      const unansweredCount = questions.length - answeredCount;
+      toast.warning(`You have ${unansweredCount} unanswered question(s). Submitting anyway...`);
     }
 
     setSubmitting(true);
 
     try {
       // All questions are now Likert scale (1-5)
-      const formattedResponses = questions.map(q => ({
-        question_id: q.id,
-        response: parseInt(responses[q.id])
-      }));
+      // Only include answered questions
+      const formattedResponses = questions
+        .filter(q => responses[q.id] !== undefined)
+        .map(q => ({
+          question_id: q.id,
+          response: parseInt(responses[q.id])
+        }));
+
+      if (formattedResponses.length === 0) {
+        toast.error('Please answer at least one question before submitting.');
+        setSubmitting(false);
+        return;
+      }
 
       await axios.post(`${API_URL}/tests/submit`, {
         user_id: user.id,
@@ -85,7 +90,7 @@ export default function AssessmentPage() {
         responses: formattedResponses
       });
 
-      toast.success('Assessment completed successfully!');
+      toast.success(`Assessment submitted! You answered ${formattedResponses.length} out of ${questions.length} questions.`);
       navigate('/dashboard');
     } catch (error) {
       console.error('Submission error:', error);
