@@ -365,6 +365,253 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Career Library Section */}
+      <section id="career-library" className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+              Explore 460+ Career Paths
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Browse our comprehensive career library - discover detailed information about diverse career options, 
+              educational pathways, entrance exams, and top institutions across 14 major domains.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { name: 'Engineering & Technology', count: '50+', icon: '⚙️', color: 'bg-blue-50 border-blue-200' },
+              { name: 'Medical & Healthcare', count: '45+', icon: '🏥', color: 'bg-green-50 border-green-200' },
+              { name: 'Business & Commerce', count: '50+', icon: '💼', color: 'bg-purple-50 border-purple-200' },
+              { name: 'Arts & Design', count: '45+', icon: '🎨', color: 'bg-pink-50 border-pink-200' },
+              { name: 'Science & Research', count: '35+', icon: '🔬', color: 'bg-teal-50 border-teal-200' },
+              { name: 'Law & Legal Services', count: '20+', icon: '⚖️', color: 'bg-amber-50 border-amber-200' },
+              { name: 'Education & Training', count: '25+', icon: '📚', color: 'bg-indigo-50 border-indigo-200' },
+              { name: 'Government Services', count: '30+', icon: '🏛️', color: 'bg-red-50 border-red-200' }
+            ].map((domain, index) => (
+              <Card key={index} className={`card-base ${domain.color} border-2 hover:shadow-lg transition-all cursor-pointer`}>
+                <div className="p-6 text-center">
+                  <div className="text-4xl mb-3">{domain.icon}</div>
+                  <h3 className="font-heading font-semibold text-base mb-2 text-primary">
+                    {domain.name}
+                  </h3>
+                  <p className="text-2xl font-bold text-secondary">{domain.count}</p>
+                  <p className="text-xs text-gray-600 mt-1">Careers</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div className="bg-subtle rounded-2xl p-8 md:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-heading font-bold text-primary mb-4">
+                  Each Career Includes:
+                </h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
+                    <span>Detailed overview & nature of work</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
+                    <span>Required skills & qualifications</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
+                    <span>Educational pathways (Class 9-12 → UG → PG)</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
+                    <span>Entrance exams & preparation tips</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
+                    <span>Top 15 institutions in India</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
+                    <span>Career progression & salary insights</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
+                    <span>Pros, challenges & related careers</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="relative">
+                <div className="bg-white rounded-xl shadow-lg p-6 border border-primary/20">
+                  <div className="text-sm text-gray-500 mb-2">Sample Career</div>
+                  <h4 className="text-xl font-heading font-bold text-primary mb-3">Software Engineer</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between py-2 border-b">
+                      <span className="text-gray-600">Education</span>
+                      <span className="font-medium">B.Tech/B.E. in CS</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b">
+                      <span className="text-gray-600">Avg. Starting Salary</span>
+                      <span className="font-medium">₹4-8 LPA</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b">
+                      <span className="text-gray-600">Top Exam</span>
+                      <span className="font-medium">JEE Main/Advanced</span>
+                    </div>
+                    <div className="flex justify-between py-2">
+                      <span className="text-gray-600">Growth Rate</span>
+                      <span className="font-medium text-green-600">Excellent ↑</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="text-center mt-8">
+              <Button 
+                size="lg" 
+                className="bg-secondary hover:bg-secondary/90 text-white px-8"
+                onClick={handleGetStarted}
+                data-testid="explore-careers-btn"
+              >
+                Explore All Careers
+              </Button>
+              <p className="text-sm text-gray-600 mt-3">
+                Browse independently or get personalized recommendations after taking the assessment
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sample Report Section */}
+      <section id="sample-report" className="py-16 md:py-24 bg-subtle">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+              Detailed Assessment Report
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              After completing your assessment, receive a comprehensive 20-25 page report with 
+              in-depth analysis, visual charts, and personalized career recommendations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Report Preview */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-primary/20">
+              <div className="mb-6">
+                <div className="text-sm text-gray-500 mb-2">Sample Report Sections</div>
+                <h3 className="text-2xl font-heading font-bold text-primary">What You'll Receive</h3>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
+                  <div>
+                    <h4 className="font-semibold text-primary">Executive Summary</h4>
+                    <p className="text-sm text-gray-600">Overall profile with radar charts showing your strengths across 5 dimensions</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
+                  <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+                  <div>
+                    <h4 className="font-semibold text-primary">Work Orientation Analysis</h4>
+                    <p className="text-sm text-gray-600">Detailed 3-4 page analysis of your work style preferences and environment fit</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
+                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">3</div>
+                  <div>
+                    <h4 className="font-semibold text-primary">Interest Mapping</h4>
+                    <p className="text-sm text-gray-600">Your interests across STEM, Arts, Business, Healthcare, and Social domains</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">4</div>
+                  <div>
+                    <h4 className="font-semibold text-primary">Personality Profile</h4>
+                    <p className="text-sm text-gray-600">8 key personality traits with behavioral insights and leadership potential</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
+                  <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">5</div>
+                  <div>
+                    <h4 className="font-semibold text-primary">Aptitude & EQ Analysis</h4>
+                    <p className="text-sm text-gray-600">Cognitive abilities and emotional intelligence assessment with learning style insights</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 p-3 bg-subtle rounded-lg">
+                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">6</div>
+                  <div>
+                    <h4 className="font-semibold text-primary">Career Recommendations</h4>
+                    <p className="text-sm text-gray-600">Top 10-15 personalized career paths with subject selection guidance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Report Features */}
+            <div className="space-y-6">
+              <Card className="card-base p-6 bg-white border-2 border-secondary/20">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Award className="text-secondary" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-lg mb-2">Visual Analysis</h4>
+                    <p className="text-gray-600">
+                      Radar charts, bar graphs, and color-coded interpretive bands (Low/Moderate/High) 
+                      make complex data easy to understand for both students and parents.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="card-base p-6 bg-white border-2 border-primary/20">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-lg mb-2">Expert Interpretation</h4>
+                    <p className="text-gray-600">
+                      500-700 word detailed interpretation for each dimension, written in simple yet 
+                      expert language understandable by students, parents, and counselors.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="card-base p-6 bg-white border-2 border-accent/20">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="text-accent" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-lg mb-2">Actionable Roadmap</h4>
+                    <p className="text-gray-600">
+                      Strengths & development areas with specific recommendations, skill development 
+                      strategies, and career pathways showing Class 9-12 → UG → PG progression.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <div className="bg-primary text-white rounded-xl p-6">
+                <h4 className="font-heading font-bold text-xl mb-2">20-25 Pages</h4>
+                <p className="text-sm opacity-90">
+                  Comprehensive analysis across all dimensions with professional formatting, 
+                  charts, tables, and counselor-ready insights. Downloaded as a PDF for easy sharing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section id="faq" className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
