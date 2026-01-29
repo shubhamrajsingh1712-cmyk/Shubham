@@ -331,27 +331,65 @@ def generate_career_recommendations(overall_scores: Dict[str, Any]) -> List[str]
     recommendations = []
     
     # Orientation-based recommendations
-    orientation = overall_scores.get("orientation", {})
-    if orientation:
-        max_orientation = max(orientation, key=orientation.get)
-        if max_orientation == "creative":
-            recommendations.extend(["Graphic Designer", "Architect", "Content Creator", "UX/UI Designer", "Filmmaker"])
-        elif max_orientation == "analytical":
-            recommendations.extend(["Data Scientist", "Engineer", "Research Scientist", "Financial Analyst", "Software Developer"])
-        elif max_orientation == "people_centric":
-            recommendations.extend(["Psychologist", "HR Manager", "Teacher", "Social Worker", "Sales Manager"])
-        elif max_orientation == "administrative":
-            recommendations.extend(["Project Manager", "Operations Manager", "Business Analyst", "Administrator", "Consultant"])
+    orientation_data = overall_scores.get("orientation", {})
+    if orientation_data:
+        orientation = orientation_data.get('normalized_scores', {})
+        if orientation:
+            max_orientation = max(orientation, key=orientation.get)
+            if max_orientation == "creative":
+                recommendations.extend([
+                    "Graphic Designer", "Architect", "Content Creator", 
+                    "UX/UI Designer", "Filmmaker", "Animator"
+                ])
+            elif max_orientation == "analytical":
+                recommendations.extend([
+                    "Data Scientist", "Software Engineer", "Research Scientist", 
+                    "Financial Analyst", "Systems Analyst", "Actuary"
+                ])
+            elif max_orientation == "people_centric":
+                recommendations.extend([
+                    "Psychologist", "HR Manager", "Teacher", 
+                    "Social Worker", "Sales Manager", "Counselor"
+                ])
+            elif max_orientation == "administrative":
+                recommendations.extend([
+                    "Project Manager", "Operations Manager", "Business Analyst", 
+                    "Administrator", "Management Consultant", "Event Manager"
+                ])
     
     # Aptitude-based additions
-    aptitude = overall_scores.get("aptitude", {})
-    if aptitude:
-        if aptitude.get("technological_understanding", 0) > 70:
-            recommendations.extend(["Software Engineer", "Cybersecurity Analyst", "AI/ML Engineer"])
-        if aptitude.get("numerical_ability", 0) > 70:
-            recommendations.extend(["Chartered Accountant", "Economist", "Actuary"])
+    aptitude_data = overall_scores.get("aptitude", {})
+    if aptitude_data:
+        aptitude = aptitude_data.get('normalized_scores', {})
+        if aptitude:
+            if aptitude.get("technological_understanding", 0) > 70:
+                recommendations.extend([
+                    "Software Developer", "Cybersecurity Analyst", 
+                    "AI/ML Engineer", "DevOps Engineer"
+                ])
+            if aptitude.get("numerical_ability", 0) > 70:
+                recommendations.extend([
+                    "Chartered Accountant", "Economist", 
+                    "Statistician", "Investment Banker"
+                ])
     
-    return list(set(recommendations[:10]))  # Return unique top 10
+    # Interest-based additions
+    interest_data = overall_scores.get("interest", {})
+    if interest_data:
+        interest = interest_data.get('normalized_scores', {})
+        if interest:
+            if interest.get("stem", 0) > 70:
+                recommendations.extend([
+                    "Research Scientist", "Engineer", 
+                    "Biotechnologist", "Data Analyst"
+                ])
+            if interest.get("healthcare", 0) > 70:
+                recommendations.extend([
+                    "Doctor", "Nurse", "Pharmacist", 
+                    "Physiotherapist", "Medical Researcher"
+                ])
+    
+    return list(set(recommendations[:15]))  # Return unique top 15
 
 def generate_pdf_report(user_data: dict, overall_scores: Dict[str, Any], report_id: str) -> str:
     """Generate a comprehensive PDF report with charts"""
