@@ -57,7 +57,6 @@ export default function LandingPage() {
               <a href="#how-it-works" className="text-sm font-medium hover:text-primary transition-colors">How It Works</a>
               <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing</a>
               <a href="#career-library" className="text-sm font-medium hover:text-primary transition-colors">Career Library</a>
-              <a href="#sample-report" className="text-sm font-medium hover:text-primary transition-colors">Sample Report</a>
               <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</a>
               {!isAuthenticated ? (
                 <Link to="/login">
