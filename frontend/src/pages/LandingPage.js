@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Phone, Mail, CheckCircle, TrendingUp, Users, Award, BookOpen } from 'lucide-react';
+import { Phone, Mail, CheckCircle, TrendingUp, Users, Award, BookOpen, FileText } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 export default function LandingPage() {
