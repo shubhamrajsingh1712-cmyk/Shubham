@@ -94,6 +94,7 @@ export default function AssessmentPage() {
   const getTestTitle = () => {
     const titles = {
       orientation: 'Work Orientation Assessment',
+      interest: 'Interest Mapping Assessment',
       personality: 'Personality Profile Assessment',
       aptitude: 'Aptitude Assessment',
       eq: 'Emotional Intelligence Assessment'
