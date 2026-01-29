@@ -166,43 +166,25 @@ export default function AssessmentPage() {
             {question.question}
           </h2>
 
-          {question.type === 'scale' ? (
-            <div className="space-y-4">
-              <RadioGroup 
-                value={responses[question.id]?.toString()} 
-                onValueChange={(val) => handleResponse(question.id, val)}
-              >
-                {[1, 2, 3, 4, 5].map(value => (
-                  <div key={value} className="flex items-center space-x-3" data-testid={`scale-option-${value}`}>
-                    <RadioGroupItem value={value.toString()} id={`${question.id}-${value}`} />
-                    <Label htmlFor={`${question.id}-${value}`} className="cursor-pointer flex-1">
-                      {value === 1 && 'Strongly Disagree'}
-                      {value === 2 && 'Disagree'}
-                      {value === 3 && 'Neutral'}
-                      {value === 4 && 'Agree'}
-                      {value === 5 && 'Strongly Agree'}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <RadioGroup 
-                value={responses[question.id]} 
-                onValueChange={(val) => handleResponse(question.id, val)}
-              >
-                {question.options.map((option, idx) => (
-                  <div key={idx} className="flex items-center space-x-3" data-testid={`mcq-option-${idx}`}>
-                    <RadioGroupItem value={option} id={`${question.id}-${idx}`} />
-                    <Label htmlFor={`${question.id}-${idx}`} className="cursor-pointer flex-1">
-                      {option}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </div>
-          )}
+          <div className="space-y-4">
+            <RadioGroup 
+              value={responses[question.id]?.toString()} 
+              onValueChange={(val) => handleResponse(question.id, val)}
+            >
+              {[1, 2, 3, 4, 5].map(value => (
+                <div key={value} className="flex items-center space-x-3" data-testid={`scale-option-${value}`}>
+                  <RadioGroupItem value={value.toString()} id={`${question.id}-${value}`} />
+                  <Label htmlFor={`${question.id}-${value}`} className="cursor-pointer flex-1">
+                    {value === 1 && 'Strongly Disagree'}
+                    {value === 2 && 'Disagree'}
+                    {value === 3 && 'Neutral'}
+                    {value === 4 && 'Agree'}
+                    {value === 5 && 'Strongly Agree'}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
         </Card>
 
         {/* Navigation Buttons */}
