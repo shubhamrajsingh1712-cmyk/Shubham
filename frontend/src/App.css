@@ -32,3 +32,36 @@
   @apply card-base hover:-translate-y-1 transition-all duration-300 cursor-pointer;
   box-shadow: 0 12px 32px -8px rgba(26, 43, 75, 0.12);
 }
+
+/* Custom Radio Button Styling */
+.assessment-radio-option {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.assessment-radio-option:hover {
+  border-color: rgba(26, 43, 75, 0.3);
+  background-color: #f9fafb;
+}
+
+.assessment-radio-option.selected {
+  border-color: #1A2B4B;
+  background-color: rgba(26, 43, 75, 0.05);
+  box-shadow: 0 2px 4px rgba(26, 43, 75, 0.1);
+}
+
+/* Radio button dot - only show when checked */
+[data-state="unchecked"] > span {
+  opacity: 0 !important;
+}
+
+[data-state="checked"] > span {
+  opacity: 1 !important;
+  background-color: #1A2B4B !important;
+}
+
