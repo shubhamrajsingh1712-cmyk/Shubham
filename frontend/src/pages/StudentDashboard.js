@@ -52,6 +52,7 @@ export default function StudentDashboard() {
 
   const testTypes = [
     { id: 'orientation', name: 'Work Orientation', description: 'Discover your work style preferences' },
+    { id: 'interest', name: 'Interest Mapping', description: 'Explore your areas of curiosity' },
     { id: 'personality', name: 'Personality Profile', description: 'Understand your personality traits' },
     { id: 'aptitude', name: 'Aptitude Assessment', description: 'Test your cognitive abilities' },
     { id: 'eq', name: 'Emotional Intelligence', description: 'Measure your EQ factors' }
