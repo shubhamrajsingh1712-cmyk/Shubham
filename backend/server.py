@@ -772,49 +772,13 @@ async def get_all_counselling_sessions(admin_user: dict = Depends(get_admin_user
 @api_router.get("/questions/{test_type}")
 async def get_test_questions(test_type: str):
     """Get questions for a specific test type"""
-    questions_data = {
-        "orientation": [
-            {"id": "orient_1", "question": "I enjoy working on creative projects that allow me to express my ideas", "type": "scale", "category": "creative"},
-            {"id": "orient_2", "question": "I prefer solving logical puzzles and analyzing data", "type": "scale", "category": "analytical"},
-            {"id": "orient_3", "question": "I like helping others and working in team environments", "type": "scale", "category": "people_centric"},
-            {"id": "orient_4", "question": "I enjoy organizing tasks and following structured processes", "type": "scale", "category": "administrative"},
-            {"id": "orient_5", "question": "I find satisfaction in designing visual or artistic content", "type": "scale", "category": "creative"},
-            {"id": "orient_6", "question": "I am good at mathematical calculations and problem-solving", "type": "scale", "category": "analytical"},
-            {"id": "orient_7", "question": "I prefer working with people rather than working alone", "type": "scale", "category": "people_centric"},
-            {"id": "orient_8", "question": "I like maintaining order and managing documentation", "type": "scale", "category": "administrative"},
-        ],
-        "personality": [
-            {"id": "pers_decision_1", "question": "I can make important decisions quickly even under pressure", "type": "scale"},
-            {"id": "pers_perseverance_1", "question": "I continue working on tasks even when they become difficult", "type": "scale"},
-            {"id": "pers_integrity_1", "question": "I always choose to do the right thing even if it's difficult", "type": "scale"},
-            {"id": "pers_leadership_1", "question": "I naturally take charge in group situations", "type": "scale"},
-            {"id": "pers_teamwork_1", "question": "I work well as part of a team", "type": "scale"},
-            {"id": "pers_emotional_stability_1", "question": "I remain calm in stressful situations", "type": "scale"},
-            {"id": "pers_risk_appetite_1", "question": "I am comfortable taking calculated risks", "type": "scale"},
-            {"id": "pers_self_discipline_1", "question": "I can maintain focus on long-term goals", "type": "scale"},
-        ],
-        "aptitude": [
-            {"id": "apt_verbal_1", "question": "Choose the word most similar to 'Benevolent'", "type": "mcq", "options": ["Kind", "Cruel", "Angry", "Sad"], "correct": "Kind"},
-            {"id": "apt_numerical_1", "question": "If 5x + 3 = 18, what is x?", "type": "mcq", "options": ["3", "4", "5", "6"], "correct": "3"},
-            {"id": "apt_logical_1", "question": "If all roses are flowers and some flowers fade quickly, then:", "type": "mcq", "options": ["All roses fade quickly", "Some roses may fade quickly", "No roses fade", "Cannot determine"], "correct": "Some roses may fade quickly"},
-            {"id": "apt_abstract_1", "question": "Complete the pattern: 2, 6, 12, 20, ?", "type": "mcq", "options": ["28", "30", "32", "36"], "correct": "30"},
-            {"id": "apt_spatial_1", "question": "How many faces does a cube have?", "type": "mcq", "options": ["4", "6", "8", "12"], "correct": "6"},
-            {"id": "apt_tech_1", "question": "What does CPU stand for?", "type": "mcq", "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "None"], "correct": "Central Processing Unit"},
-        ],
-        "eq": [
-            {"id": "eq_awareness_1", "question": "I am aware of my emotions and can identify them easily", "type": "scale"},
-            {"id": "eq_regulation_1", "question": "I can control my emotional reactions in difficult situations", "type": "scale"},
-            {"id": "eq_empathy_1", "question": "I can easily understand how others are feeling", "type": "scale"},
-            {"id": "eq_motivation_1", "question": "I stay motivated even when facing setbacks", "type": "scale"},
-            {"id": "eq_conflict_1", "question": "I handle conflicts calmly and constructively", "type": "scale"},
-            {"id": "eq_social_1", "question": "I feel responsible for contributing to my community", "type": "scale"},
-        ]
-    }
+    from question_bank import get_questions_by_type
     
-    if test_type not in questions_data:
+    questions = get_questions_by_type(test_type)
+    if questions is None:
         raise HTTPException(status_code=404, detail="Test type not found")
     
-    return {"test_type": test_type, "questions": questions_data[test_type]}
+    return questions
 
 # Include router
 app.include_router(api_router)
