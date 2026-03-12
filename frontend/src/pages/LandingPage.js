@@ -251,7 +251,7 @@ export default function LandingPage() {
             See what a comprehensive 20-25 page career discovery report looks like.
             Download our sample report for a fictional student, Prashant Shivam.
           </p>
-          <a href="/sample_report.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="/sample_report.pdf" download="BoatMyCareer_Sample_Report.pdf">
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
