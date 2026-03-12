@@ -7,6 +7,8 @@ import StudentDashboard from '@/pages/StudentDashboard';
 import AdminDashboard from '@/pages/AdminDashboard';
 import AssessmentPage from '@/pages/AssessmentPage';
 import PaymentPage from '@/pages/PaymentPage';
+import CareerLibraryPage from '@/pages/CareerLibraryPage';
+import CareerDetailPage from '@/pages/CareerDetailPage';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 import '@/App.css';
 
@@ -34,6 +36,8 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/careers" element={<CareerLibraryPage />} />
+            <Route path="/careers/:slug" element={<CareerDetailPage />} />
             <Route
               path="/dashboard"
               element={

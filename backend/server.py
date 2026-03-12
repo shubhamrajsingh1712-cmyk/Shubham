@@ -825,6 +825,56 @@ async def get_test_questions(test_type: str):
     
     return questions
 
+# Career Library Endpoints
+@api_router.get("/careers/categories")
+async def get_career_categories():
+    from career_data import get_categories, get_category_counts
+    categories = get_categories()
+    counts = get_category_counts()
+    return [
+        {**cat, "count": counts.get(cat["id"], 0)}
+        for cat in categories
+    ]
+
+@api_router.get("/careers/search")
+async def search_careers(q: str = "", category: str = "", page: int = 1, limit: int = 24):
+    from career_data import get_all_careers
+    careers = get_all_careers()
+    if category:
+        careers = [c for c in careers if c["category"] == category]
+    if q:
+        q_lower = q.lower()
+        careers = [
+            c for c in careers
+            if q_lower in c["name"].lower()
+            or q_lower in c["description"].lower()
+            or any(q_lower in s.lower() for s in c["skills_required"])
+        ]
+    total = len(careers)
+    start = (page - 1) * limit
+    end = start + limit
+    return {"careers": careers[start:end], "total": total, "page": page, "pages": (total + limit - 1) // limit}
+
+@api_router.get("/careers/{slug}")
+async def get_career_detail(slug: str):
+    from career_data import get_career_by_slug, get_all_careers
+    career = get_career_by_slug(slug)
+    if not career:
+        raise HTTPException(status_code=404, detail="Career not found")
+    # Add related careers (same category, different slug)
+    all_careers = get_all_careers()
+    related = [
+        {"name": c["name"], "slug": c["slug"], "growth_outlook": c["growth_outlook"]}
+        for c in all_careers
+        if c["category"] == career["category"] and c["slug"] != career["slug"]
+    ][:6]
+    career["related_careers"] = related
+    # Add category name
+    from career_data import get_categories
+    cat_map = {c["id"]: c["name"] for c in get_categories()}
+    career["category_name"] = cat_map.get(career["category"], "")
+    return career
+
 # Include router
 app.include_router(api_router)
 

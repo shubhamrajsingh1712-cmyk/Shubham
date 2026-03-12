@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Phone, Mail, CheckCircle, TrendingUp, Users, Award, BookOpen, FileText } from 'lucide-react';
+import { Phone, Mail, CheckCircle, TrendingUp, Users, Award, BookOpen, FileText, ArrowRight } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 export default function LandingPage() {
@@ -654,25 +654,26 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
-              { name: 'Engineering & Technology', count: '50+', icon: '⚙️', color: 'bg-blue-50 border-blue-200' },
-              { name: 'Medical & Healthcare', count: '45+', icon: '🏥', color: 'bg-green-50 border-green-200' },
-              { name: 'Business & Commerce', count: '50+', icon: '💼', color: 'bg-purple-50 border-purple-200' },
-              { name: 'Arts & Design', count: '45+', icon: '🎨', color: 'bg-pink-50 border-pink-200' },
-              { name: 'Science & Research', count: '35+', icon: '🔬', color: 'bg-teal-50 border-teal-200' },
-              { name: 'Law & Legal Services', count: '20+', icon: '⚖️', color: 'bg-amber-50 border-amber-200' },
-              { name: 'Education & Training', count: '25+', icon: '📚', color: 'bg-indigo-50 border-indigo-200' },
-              { name: 'Government Services', count: '30+', icon: '🏛️', color: 'bg-red-50 border-red-200' }
+              { name: 'Engineering & Technology', count: '50+', id: 'eng', color: 'bg-blue-50 border-blue-200' },
+              { name: 'Medical & Healthcare', count: '45+', id: 'med', color: 'bg-green-50 border-green-200' },
+              { name: 'Business & Commerce', count: '50+', id: 'biz', color: 'bg-purple-50 border-purple-200' },
+              { name: 'Arts & Design', count: '35+', id: 'art', color: 'bg-pink-50 border-pink-200' },
+              { name: 'Science & Research', count: '35+', id: 'sci', color: 'bg-teal-50 border-teal-200' },
+              { name: 'Law & Legal Services', count: '20+', id: 'law', color: 'bg-amber-50 border-amber-200' },
+              { name: 'Education & Training', count: '20+', id: 'edu', color: 'bg-indigo-50 border-indigo-200' },
+              { name: 'Government Services', count: '20+', id: 'gov', color: 'bg-red-50 border-red-200' }
             ].map((domain, index) => (
-              <Card key={index} className={`card-base ${domain.color} border-2 hover:shadow-lg transition-all cursor-pointer`}>
-                <div className="p-6 text-center">
-                  <div className="text-4xl mb-3">{domain.icon}</div>
-                  <h3 className="font-heading font-semibold text-base mb-2 text-primary">
-                    {domain.name}
-                  </h3>
-                  <p className="text-2xl font-bold text-secondary">{domain.count}</p>
-                  <p className="text-xs text-gray-600 mt-1">Careers</p>
-                </div>
-              </Card>
+              <Link key={index} to={`/careers?category=${domain.id}`}>
+                <Card className={`card-base ${domain.color} border-2 hover:shadow-lg transition-all cursor-pointer h-full`}>
+                  <div className="p-6 text-center">
+                    <h3 className="font-heading font-semibold text-base mb-2 text-primary">
+                      {domain.name}
+                    </h3>
+                    <p className="text-2xl font-bold text-secondary">{domain.count}</p>
+                    <p className="text-xs text-gray-600 mt-1">Careers</p>
+                  </div>
+                </Card>
+              </Link>
             ))}
           </div>
 
@@ -739,14 +740,15 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="text-center mt-8">
-              <Button 
-                size="lg" 
-                className="bg-secondary hover:bg-secondary/90 text-white px-8"
-                onClick={handleGetStarted}
-                data-testid="explore-careers-btn"
-              >
-                Explore All Careers
-              </Button>
+              <Link to="/careers">
+                <Button 
+                  size="lg" 
+                  className="bg-secondary hover:bg-secondary/90 text-white px-8"
+                  data-testid="explore-careers-btn"
+                >
+                  Explore All Careers <ArrowRight className="ml-2" size={18} />
+                </Button>
+              </Link>
               <p className="text-sm text-gray-600 mt-3">
                 Browse independently or get personalized recommendations after taking the assessment
               </p>
