@@ -67,8 +67,13 @@ Build "BoatMyCareer.com," a comprehensive career counseling platform for student
 
 ## Prioritized Backlog
 
+### Landing Page Restructuring (Completed - March 2026)
+- Simplified Sample Report section to a single download button linking to `/sample_report.pdf`
+- Removed Career Library section from landing page body (nav link retained, points to `/careers`)
+- Moved "Meet Your Career Guide" section to be last before footer
+
 ### P0 - Next Priority
-- AI-powered Career Match feature (user requested)
+- Integrate Assessment Report with Career Library (link recommendations to career pages)
 
 ### P1 - High Priority
 - Populate career library to 400+ careers

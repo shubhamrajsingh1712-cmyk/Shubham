@@ -8,7 +8,7 @@ import requests
 import os
 from io import BytesIO
 
-BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://psycho-test-launch.preview.emergentagent.com')
+BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://career-assessment-2.preview.emergentagent.com')
 TEST_USER_ID = "2a7dbea5-0de8-43d0-ae36-0d0027f0ecff"
 ADMIN_EMAIL = "admin@boatmycareer.com"
 ADMIN_PASSWORD = "admin123"
